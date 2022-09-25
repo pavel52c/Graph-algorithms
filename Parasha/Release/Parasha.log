@@ -1,0 +1,7 @@
+﻿  main.cpp
+C:\Users\1\Desktop\Parasha\main.cpp(70,23): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 532 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Parasha.vcxproj -> C:\Users\1\Desktop\Parasha\Release\Parasha.exe

@@ -4,4 +4,4 @@ project(lab1)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(lab1
-        ConsoleApplication1.cpp)
+        ConsoleApplication1.cpp "aye.cpp")
