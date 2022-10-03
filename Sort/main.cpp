@@ -1,28 +1,34 @@
 #include "Header.h"
-#include <time.h> 
+#include <time.h>  
 
 int main() {
-	int bubleArray[] = { 100, 3, 4, 6, 0, 1, 1, 12, 0, -2 };
-	int twoCanalArray[] = { 100, 3, 4, 6, 0, 1, 1, 12, 0, -2 };
-	int arrayLen = sizeof(bubleArray) / sizeof(bubleArray[0]);
+	const int arrayLen = 10000;
+	clock_t start, end;
 
-	cout << "Array: ";
-	printArray(bubleArray, arrayLen);
-	
-	cout << "\nStart with bubleSort";
-	clock_t startBuble, finishBuble, startCanal, finishCanal;
-	startBuble = clock();
+	int* bubleArray = new int[arrayLen];
+	int* twoCanalArray = new int[arrayLen];
+	int* qsortArray = new int[arrayLen];
+	// Заполнение массива различными наборами данных
+	randomFillArray(bubleArray, arrayLen);
+	randomFillArray(twoCanalArray, arrayLen);
+	randomFillArray(qsortArray, arrayLen);
+
+	// Проводим замеры
+	start = clock();
 	bubleSort(bubleArray, arrayLen);
-	finishBuble = clock() - startBuble;
-	cout << "\ntime with bubleSort: " << finishBuble << "\n";
-	
-	printArray(bubleArray, arrayLen);
-	cout << "\nStart with twoCanalSort\n";
-	startCanal = clock();
+	end = clock();
+	cout << "Time for buble sort: " << end - start << '\n' << endl;
+
+	start = clock();
 	twoCanal(twoCanalArray, arrayLen);
-	finishCanal = clock() - startBuble;
-	printArray(twoCanalArray, arrayLen);
-	cout << "\ntime with canalSort: " << finishCanal << "\n";
- 	
+	end = clock();
+	cout << "Time for twoCanal: " << end - start << '\n' << endl;
+
+	start = clock();
+	#pragma omp parallel for
+	qsort(qsortArray, arrayLen, sizeof(int), (int(*) (const void*, const void*)) intComparison);
+	end = clock();
+	cout << "Time for qsort: " << end - start << '\n' << endl;
+
 	return 0;
 }

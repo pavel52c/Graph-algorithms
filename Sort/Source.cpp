@@ -1,11 +1,10 @@
 #include "Header.h"
-
-void helloWorld() {
-	cout << "Hello World";
-}
+#include <stdio.h>
+#include <time.h>
 
 void bubleSort(int* Arr, int len) {
 	int t;
+	//#pragma omp parallel for
 	for (int i = 0; i < len - 1;) {
 		if (Arr[i] > Arr[i + 1]) {
 			t = Arr[i];
@@ -25,6 +24,7 @@ void printArray(int* Array, int len) {
 }
 
 void twoCanal(int* ar, int lng) {
+	#pragma omp parallel for
 	for (int lfI = 0, rgI = lng - 1; lfI < rgI;) {
 		for (int i = lfI; i < rgI; ++i)
 			if (ar[i + 1] < ar[i])
@@ -36,4 +36,23 @@ void twoCanal(int* ar, int lng) {
 				swap(ar[i - 1], ar[i]);
 		lfI++;
 	}
+}
+
+void randomFillArray(int* arr, const int size) {
+	for (int i = 0; i < size; i++)
+		arr[i] = 1 + rand() % 1000;
+}
+
+void fillRightArray(int* arr, const int size) {
+	for (int i = 0; i < size; i++)
+		arr[i] = i;
+}
+
+void fillBadArray(int* arr, const int size) {
+	for (int i = 0; i < size; i++)
+		arr[i] = size - i;
+}
+
+int intComparison(const int* i, const int* j) {
+	return *i - *j;
 }
