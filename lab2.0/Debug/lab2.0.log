@@ -1,0 +1,4 @@
+﻿  lab2.0.cpp
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab2.0\lab2.0.cpp(65,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab2.0\lab2.0.cpp(150,20): warning C4018: <: несоответствие типов со знаком и без знака
+  lab2.0.vcxproj -> C:\Users\PavelKek\Desktop\Graph-algorithms\lab2.0\Debug\lab2.0.exe

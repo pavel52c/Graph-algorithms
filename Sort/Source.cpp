@@ -21,6 +21,7 @@ void printArray(int* Array, int len) {
 	for (int i = 0; i < len; i++) {
 		cout << Array[i] << " ";
 	}
+	cout << '\n';
 }
 
 void twoCanal(int* ar, int lng) {
