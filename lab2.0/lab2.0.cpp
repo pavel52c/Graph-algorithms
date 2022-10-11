@@ -47,7 +47,7 @@ struct Point {
 };
 
 map<Point, vector<Point>> adjList;
-map<Point, Point> Pred;
+map<Point, vector<Point>> Pred;
 vector<Point> cycle;
 map<Point, string> State;
 
@@ -110,16 +110,20 @@ vector<Point> getKeys(map<Point, vector<Point>> Map) {
 	return result;
 }
 
+
+bool find(vector<Point> array, Point value) {
+	return find(array.begin(), array.end(), value) != array.end();
+}
+
 void DFS_Visit(Point vertex) {
 	State[vertex] = "visited";
 	for (Point i : adjList[vertex]) {
 		if (State[i] == "unvisited") {
-			Pred[i] = vertex;
+			Pred[i].push_back(vertex);
 			DFS_Visit(i);
 		}
-		else if (Pred[vertex] != i && State[i] == "visited") {
-			auto pointer = find(cycle.begin(), cycle.end(), vertex);
-			if (pointer == cycle.end()) {
+		else if (!find(Pred[vertex], i) && State[i] == "visited") {
+			if (!find(cycle, vertex)) {
 				cycle.push_back(vertex);
 				DFS_Visit(i);
 			}
@@ -130,10 +134,10 @@ void DFS_Visit(Point vertex) {
 
 void DFS() {
 	vector<Point> vertices = getKeys(adjList);
-
+	vector<Point> emptyEdge;
 	for (Point vertice : vertices) {
 		State[vertice] = "unvisited";
-		Pred[vertice] = Point();
+		Pred[vertice] = emptyEdge;
 	}
 
 	for (Point vertice : vertices) {
