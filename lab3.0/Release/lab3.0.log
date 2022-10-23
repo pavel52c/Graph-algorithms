@@ -1,0 +1,11 @@
+﻿  lab3.0.cpp
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\lab3.0.cpp(1,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\lab3.0.cpp(40,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\lab3.0.cpp(40,47): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\lab3.0.cpp(64,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\lab3.0.cpp(103,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 505 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  lab3.0.vcxproj -> C:\Users\PavelKek\Desktop\Graph-algorithms\lab3.0\Release\lab3.0.exe
