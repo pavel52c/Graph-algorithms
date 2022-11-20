@@ -1,0 +1,8 @@
+﻿  lab4.0.cpp
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab4.0\lab4.0.cpp(23,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab4.0\lab4.0.cpp(23,52): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 562 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  lab4.0.vcxproj -> C:\Users\PavelKek\Desktop\Graph-algorithms\lab4.0\Release\lab4.0.exe

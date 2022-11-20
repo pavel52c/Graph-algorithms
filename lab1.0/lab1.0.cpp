@@ -15,109 +15,114 @@ vector<string> splitBySpace(const string str) {
 		vertices.push_back(vertice);
 	}
 	return vertices;
-}
+};
 
-void printVector(vector<string> vect) {
-	for (int i = 0; i < vect.size(); i++) {
-		cout << vect[i] << ' ';
-	}
-	cout << '\n';
-}
+class Graph {
+	
+private:
+	map<string, vector<string>> graph;
+	vector<string> vertices;
 
-void printLs(map<string, vector<string>>  graph, vector<string> vertices, string outputFile) {
-	ofstream output;
-	output.open(outputFile);
+public:
+	Graph(const char* fileName) {
+		ifstream input(fileName);
+		string line;
 
-	if (output.is_open()) {
-		vector<string> value;
-		for (string vertice : vertices) {
-			output << vertice << ": ";
+		if (input.is_open()) {
+			getline(input, line);
+			setVertices(line);
 
-			auto pointer = graph.find(vertice);
-			if (pointer != graph.end()) {
-				value = graph.find(vertice)->second;
-				for (string s : value)
-					output << s << " ";
+			while (getline(input, line)) {
+				addToMap(line);
 			}
-			else {
-				output << " ";
+		}
+	}
+
+	map<string, vector<string>> getGraph() {
+		return this->graph;
+	}
+
+	void setVertices(string vertices) {
+		this->vertices = splitBySpace(vertices);
+	}
+
+	void insertToMap(vector<string> value) {
+		auto pointer = graph.find(value[0]);
+		if (pointer != graph.end()) {
+			this->graph[value[0]].push_back(value[1]);
+		}
+		else {
+			vector<string> values = { value[1] };
+			this->graph.insert({ value[0], values });
+		}
+	}
+
+	void addToMap(string line) {
+		vector<string> value = splitBySpace(line);
+
+		insertToMap(value);
+
+		reverse(value.begin(), value.end());
+
+		insertToMap(value);
+	}
+
+	void makeLs(const char* fileName) {
+		ofstream output;
+		output.open(fileName);
+
+		if (output.is_open()) {
+			vector<string> value;
+			for (string vertice : this->vertices) {
+				output << vertice << ": ";
+
+				auto pointer = this->graph.find(vertice);
+				if (pointer != this->graph.end()) {
+					value = this->graph.find(vertice)->second;
+					for (string s : value)
+						output << s << " ";
+				}
+				else {
+					output << " ";
+				}
+				output << endl;
 			}
 			output << endl;
 		}
-		output << endl;
 	}
-}
-
-void printMx(map<string, vector<string>>  graph, vector<string> vertices, string fileName) {
-	ofstream output;
-	output.open(fileName);
-	if (output.is_open()) {
-		vector<string> value;
-		for (string verticeOutside : vertices) {
-			auto pointer = graph.find(verticeOutside);
-			string res = "";
-			if (pointer != graph.end()) {
-				value = graph.find(verticeOutside)->second;
-				for (string verticeInside : vertices) {
-					if (find(value.begin(), value.end(), verticeInside) != value.end()) {
-						res += "1 ";
+	
+	void makeMx(const char* fileName) {
+		ofstream output;
+		output.open(fileName);
+		if (output.is_open()) {
+			vector<string> value;
+			for (string verticeOutside : this->vertices) {
+				auto pointer = this->graph.find(verticeOutside);
+				string res = "";
+				if (pointer != this->graph.end()) {
+					value = this->graph.find(verticeOutside)->second;
+					for (string verticeInside : this->vertices) {
+						if (find(value.begin(), value.end(), verticeInside) != value.end()) {
+							res += "1 ";
+						}
+						else
+							res += "0 ";
 					}
-					else
+				}
+				else {
+					for (string verticeInside : this->vertices)
 						res += "0 ";
 				}
+				output << res << endl;
 			}
-			else {
-				for (string verticeInside : vertices)
-					res += "0 ";
-			}
-			output << res << endl;
 		}
 	}
-}
-
-
-void insertToMap(map<string, vector<string>>& graph, vector<string> value) {
-	auto pointer = graph.find(value[0]);
-	if (pointer != graph.end()) {
-		graph[value[0]].push_back(value[1]);
-	}
-	else {
-		vector<string> values = { value[1] };
-		graph.insert({ value[0], values });
-	}
-}
-
-void addToMap(map<string, vector<string>>& graph, string line) {
-	vector<string> value = splitBySpace(line);
-
-	insertToMap(graph, value);
-
-	reverse(value.begin(), value.end());
-
-	insertToMap(graph, value);
-}
-
-void makeSolution(map<string, vector<string>>& graph, char* argv[]) {
-	ifstream input(argv[1]);
-	string line;
-	vector<string> vertices;
-
-	if (input.is_open()) {
-		getline(input, line);
-		vertices = splitBySpace(line);
-
-		while (getline(input, line)) {
-			addToMap(graph, line);
-		}
-	}
-
-	printLs(graph, vertices, argv[2]);
-	printMx(graph, vertices, argv[3]);
-}
+};
 
 int main(int argc, char* argv[]) {
-	map<string, vector<string>> graph;
-	makeSolution(graph, argv);
+	Graph graph = Graph(argv[1]);
+	graph.makeMx(argv[2]);
+	graph.makeLs(argv[3]);
 
 	return 0;
 }

@@ -1,0 +1,32 @@
+﻿  lab5.0.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\utility(190,16): warning C4244: инициализация: преобразование "_Ty" в "_Ty1", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+          and
+          [
+              _Ty1=int
+          ]
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab5.0\lab5.0.cpp(89): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::pair<int,int>::pair<float,float,0>(_Other1 &&,_Other2 &&) noexcept"
+          with
+          [
+              _Other1=float,
+              _Other2=float
+          ]
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab5.0\lab5.0.cpp(89): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::pair<int,int>::pair<float,float,0>(_Other1 &&,_Other2 &&) noexcept"
+          with
+          [
+              _Other1=float,
+              _Other2=float
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.33.31629\include\utility(190,54): warning C4244: инициализация: преобразование "_Ty" в "_Ty2", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+          and
+          [
+              _Ty2=int
+          ]
+  lab5.0.vcxproj -> C:\Users\PavelKek\Desktop\Graph-algorithms\lab5.0\x64\Debug\lab5.0.exe
