@@ -1,0 +1,4 @@
+﻿  lab6.0.cpp
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab6.0\lab6.0.cpp(103,15): warning C4244: +=: преобразование "double" в "int", возможна потеря данных
+C:\Users\PavelKek\Desktop\Graph-algorithms\lab6.0\lab6.0.cpp(112,52): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  lab6.0.vcxproj -> C:\Users\PavelKek\Desktop\Graph-algorithms\lab6.0\x64\Debug\lab6.0.exe
