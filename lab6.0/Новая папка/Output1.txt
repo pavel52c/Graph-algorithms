@@ -1,0 +1,13 @@
+11
+y t 4
+s c 6
+c z 1
+x b 2
+y a 1
+s a 3
+x t 2
+a x 4
+z t 5
+s b 2
+b z 4
+c y 5

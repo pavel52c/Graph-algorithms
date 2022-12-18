@@ -37,6 +37,7 @@ void readFromFile(const char* fileName) {
 		for (int i = 0; i < vertices.size(); i++) {
 			dict.insert({ vertices[i], i});
 			matrix.push_back(empty);
+			resultFlows.push_back(empty);
 		}
 
 		while (getline(input, line)) {
@@ -101,7 +102,13 @@ int fordFulkerson(int s, int t) {
 		}
 		max_flow += path_flow;
 	}
-	resultFlows = rGraph;
+	
+	for (int i = 0; i < rGraph.size(); i++) {
+		for (int j = 0; j < rGraph[i].size(); j++) {
+			resultFlows[i][j] = matrix[i][j] - rGraph[i][j];
+		}
+	}
+
 	return max_flow;
 }
 
@@ -112,7 +119,7 @@ void makeOutput(const char* fileName) {
 	for (pair<string, string> edge : output) {
 		string first = edge.first;
 		string second = edge.second;
-		outputFile << edge.first << " " << edge.second << " " << resultFlows[dict[first]][dict[second]] << endl;
+		outputFile << first << " " << second << " " << resultFlows[dict[first]][dict[second]] << endl;
 	}	
 }
 
